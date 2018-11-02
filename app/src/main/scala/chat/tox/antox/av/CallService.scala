@@ -4,7 +4,7 @@ import android.content.Context
 import android.media.AudioManager
 import chat.tox.antox.data.State
 import chat.tox.antox.tox.ToxService
-import chat.tox.antox.utils.AntoxNotificationManager
+//import chat.tox.antox.utils.AntoxNotificationManager
 import rx.lang.scala.Subscription
 
 import scala.util.Try
@@ -21,7 +21,7 @@ class CallService(toxService: ToxService) {
       Some(State.callManager.callAddedObservable.subscribe(call => {
         call.enhancements ++= Seq(
           new CallEventLogger(call, toxService),
-          new CallSounds(call, toxService),
+//          new CallSounds(call, toxService),
           new AudioStateManager(call, audioManager)
         )
       }))
@@ -43,8 +43,8 @@ class CallService(toxService: ToxService) {
               // take the friend info as info in the notification may be outdated
               val maybeFriend = friendInfoList.find(_.key == call.contactKey)
               maybeFriend.foreach { friend =>
-                val callNotification = new OngoingCallNotification(toxService, friend, call)
-                toxService.startForeground(callNotification.id, callNotification.build())
+//                val callNotification = new OngoingCallNotification(toxService, friend, call)
+//                toxService.startForeground(callNotification.id, callNotification.build())
               }
             case None =>
               // if there is no active call stop foreground and remove the notification
@@ -52,7 +52,7 @@ class CallService(toxService: ToxService) {
           }
         }))
 
-    AntoxNotificationManager.startMonitoringCalls(toxService, State.db)
+//    AntoxNotificationManager.startMonitoringCalls(toxService, State.db)
   }
 
   def findNewestCall(activeCalls: Iterable[Call]): Option[Call] = {
@@ -63,7 +63,7 @@ class CallService(toxService: ToxService) {
     toxService.stopForeground(true)
     toxService.stopSelf()
 
-    AntoxNotificationManager.stopMonitoringCalls()
+//    AntoxNotificationManager.stopMonitoringCalls()
     callAddedSubscription.foreach(_.unsubscribe())
     callNotificationSubscription.foreach(_.unsubscribe())
   }

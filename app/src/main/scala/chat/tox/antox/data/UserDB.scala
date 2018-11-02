@@ -5,7 +5,7 @@ import android.content.{ContentValues, Context}
 import android.database.Cursor
 import android.database.sqlite.{SQLiteDatabase, SQLiteOpenHelper}
 import android.preference.PreferenceManager
-import chat.tox.antox.R
+//import chat.tox.antox.R
 import chat.tox.antox.data.UserDB.DatabaseHelper
 import chat.tox.antox.toxme.ToxMeName
 import chat.tox.antox.utils.DatabaseConstants._
@@ -140,8 +140,8 @@ class UserDB(ctx: Context) {
     values.put(COLUMN_NAME_PASSWORD, password)
     values.put(COLUMN_NAME_NICKNAME, toxMeName.username)
     values.put(COLUMN_NAME_STATUS, "online")
-    val defaultStatusMessage = ctx.getResources.getString(R.string.pref_default_status_message)
-    values.put(COLUMN_NAME_STATUS_MESSAGE, defaultStatusMessage)
+//    val defaultStatusMessage = ctx.getResources.getString(R.string.pref_default_status_message)
+//    values.put(COLUMN_NAME_STATUS_MESSAGE, defaultStatusMessage)
     values.put(COLUMN_NAME_AVATAR, "")
     values.put(COLUMN_NAME_LOGGING_ENABLED, true)
     values.put(COLUMN_NAME_TOXME_DOMAIN, toxMeName.domain.getOrElse(""))
@@ -269,7 +269,7 @@ class UserDB(ctx: Context) {
     val query = s"SELECT * FROM $TABLE_CALL_REPLIES WHERE $COLUMN_NAME_PROFILE_NAME='$getActiveUser'"
     mDb.createQuery(TABLE_CALL_REPLIES, query).map(_.use { cursor =>
       val callReplies = new ArrayBuffer[CallReply]()
-      val defaultReplies = ctx.getResources.getStringArray(R.array.call_incoming_reply_message_choices)
+//      val defaultReplies = ctx.getResources.getStringArray(R.array.call_incoming_reply_message_choices)
 
       if (cursor.moveToFirst()) {
         var i = 0
@@ -277,8 +277,8 @@ class UserDB(ctx: Context) {
           val databaseReply = cursor.getString(COLUMN_NAME_CALL_REPLY)
 
           //hack to keep the replies translatable by using defaults unless the user has set one
-          val reply = if (databaseReply.isEmpty) defaultReplies.lift(i).getOrElse("") else databaseReply
-          callReplies += CallReply(cursor.getInt(COLUMN_NAME_ID), reply)
+//          val reply = if (databaseReply.isEmpty) defaultReplies.lift(i).getOrElse("") else databaseReply
+//          callReplies += CallReply(cursor.getInt(COLUMN_NAME_ID), reply)
 
           i += 1
         } while (cursor.moveToNext())

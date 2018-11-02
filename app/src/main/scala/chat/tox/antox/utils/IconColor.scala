@@ -1,21 +1,21 @@
 package chat.tox.antox.utils
 
-import chat.tox.antox.R
+//import chat.tox.antox.R
 import im.tox.tox4j.core.enums.ToxUserStatus
 
 object IconColor {
 
   def iconDrawable(isOnline: Boolean, status: ToxUserStatus): Int = {
     val color = if (!isOnline) {
-      R.drawable.circle_offline
+     0
     } else if (status == ToxUserStatus.NONE) {
-      R.drawable.circle_online
+      0
     } else if (status == ToxUserStatus.AWAY) {
-      R.drawable.circle_away
+     0
     } else if (status == ToxUserStatus.BUSY) {
-      R.drawable.circle_busy
+     0
     } else {
-      R.drawable.circle_offline
+      0
     }
     color
   }

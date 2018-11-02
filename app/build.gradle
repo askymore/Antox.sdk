@@ -1,33 +1,33 @@
-buildscript {
-    System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true' // Fix gradle bug
-
-    repositories {
-        jcenter()
-        mavenCentral()
-        flatDir dirs: "libs"
-        maven { url "http://jcenter.bintray.com" }
-        maven { url "https://jitpack.io" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "http://dl.bintray.com/drummer-aidan/maven" }
-        maven { url "https://repository.apache.org/content/repositories/snapshots/" }
-        maven { url 'https://maven.google.com' }
-    }
-
-    dependencies {
-
-        classpath ('com.android.tools.build:gradle:3.0.1'){
-            exclude module: 'proguard-gradle'
-        }
-        // compiled by subliun --------
-        classpath 'jp.leafytree.gradle:gradle-android-scala-plugin:1.5-SNAPSHOT'
-        // compiled by subliun --------
-
-        // 5.0 -> [5.1, 5.2.1, 5.3.2]
-        classpath('net.sf.proguard:proguard-gradle:5.3.2') {
-            force = true
-        }
-    }
-}
+//buildscript {
+//    System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true' // Fix gradle bug
+//
+//    repositories {
+//        jcenter()
+//        mavenCentral()
+//        flatDir dirs: "libs"
+//        maven { url "http://jcenter.bintray.com" }
+//        maven { url "https://jitpack.io" }
+//        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+//        maven { url "http://dl.bintray.com/drummer-aidan/maven" }
+//        maven { url "https://repository.apache.org/content/repositories/snapshots/" }
+//        maven { url 'https://maven.google.com' }
+//    }
+//
+//    dependencies {
+//
+//        classpath ('com.android.tools.build:gradle:3.0.1'){
+//            exclude module: 'proguard-gradle'
+//        }
+//        // compiled by subliun --------
+//        classpath 'jp.leafytree.gradle:gradle-android-scala-plugin:1.5-SNAPSHOT'
+//        // compiled by subliun --------
+//
+//        // 5.0 -> [5.1, 5.2.1, 5.3.2]
+//        classpath('net.sf.proguard:proguard-gradle:5.3.2') {
+//            force = true
+//        }
+//    }
+//}
 
 repositories {
     mavenCentral()
@@ -39,16 +39,16 @@ repositories {
     maven { url 'https://maven.google.com' }
 }
 
-apply plugin: "com.android.application"
+apply plugin: "com.android.library"
 apply plugin: "jp.leafytree.android-scala"
-
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 25
 
     dexOptions {
         javaMaxHeapSize "2012m"
-        // preDexLibraries = true
+//         preDexLibraries = true
     }
 
     defaultConfig {
@@ -62,8 +62,8 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
-        applicationId "chat.tox.antox"
-        testApplicationId "chat.tox.antox.tests"
+//        applicationId "chat.tox.antox"
+//        testApplicationId "chat.tox.antox.tests"
 
         ndk {
             abiFilters "arm64-v8a", "armeabi", "armeabi-v7a", "x86", "x86_64"
@@ -139,9 +139,11 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: '*.jar')
 
-    compile 'com.github.joshjdevl.libsodiumjni:libsodium-jni-aar:1.0.3-SNAPSHOT'
+//    compile 'com.github.joshjdevl.libsodiumjni:libsodium-jni-aar:1.0.3-SNAPSHOT'
+    compile 'com.github.joshjdevl.libsodiumjni:libsodium-jni-aar:1.0.5'
 
-    compile 'com.android.support:multidex:1.0.2' // ???
+    compile 'com.android.support:multidex:1.0.3' // ???
+    compile 'com.android.support:multidex-instrumentation:1.0.3'
     compile 'org.scala-lang:scala-library:2.11.8' // 2.11.8 -> [2.12.0, 2.12.1] *dont upgrade*
     // 3.6.1-10 -> [4.0, 4.1, 4.2]
     compile 'org.scaloid:scaloid_2.11:4.2'
@@ -152,14 +154,12 @@ dependencies {
     // 1.8.2 -> [1.8.3, 1.9.0, 1.10.3]
     compile 'org.scodec:scodec-core_2.11:1.10.3'
     compile 'org.apache.commons:commons-imaging:1.0-SNAPSHOT' // 1.0-SNAPSHOT -> [1.0-R1534292]
-    compile 'com.android.support:design:25.1.0'
-    compile 'com.android.support:recyclerview-v7:25.1.0'
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:gridlayout-v7:25.1.0'
+//    compile 'com.android.support:design:25.1.0'
+//    compile 'com.android.support:recyclerview-v7:25.1.0'
+//    compile 'com.android.support:appcompat-v7:25.1.0'
+//    compile 'com.android.support:gridlayout-v7:25.1.0'
     compile 'com.android.support:support-v4:25.1.0'
-    //
-    //
-    //
+
     // -- upgrade me !! --
     // -- upgrade me !! --
     // 1.0.6 -> [1.1.10, 1.2.4] *1.2.4*
@@ -208,8 +208,8 @@ dependencies {
     }
     // ---
 
-    compile 'pub.devrel:easypermissions:0.3.0'
-    compile 'com.github.angads25:filepicker:1.0.6'
+//    compile 'pub.devrel:easypermissions:0.3.0'
+//    compile 'com.github.angads25:filepicker:1.0.6'
 
     // androidTestCompile 'org.scala-lang:scala-library:2.11.8'
     // androidTestCompile 'com.android.support.test:runner:0.4'
@@ -230,4 +230,16 @@ tasks.withType(ScalaCompile) {
     scalaCompileOptions.deprecation = false
     // Additional parameters
     scalaCompileOptions.additionalParameters = ["-Xexperimental"]
+}
+
+
+uploadArchives{
+    repositories{
+        mavenDeployer{
+            repository(url:"file://D:/android/extras/android/m2repository/")
+            pom.groupId='tox.chat'
+            pom.artifactId='antox.sdk'
+            pom.version='1.0-SNAPSHOT'
+        }
+    }
 }

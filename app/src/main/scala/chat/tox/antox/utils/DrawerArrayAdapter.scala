@@ -5,7 +5,7 @@ import java.util
 import android.content.Context
 import android.view.{LayoutInflater, View, ViewGroup}
 import android.widget.{ArrayAdapter, ImageView, TextView}
-import chat.tox.antox.R
+//import chat.tox.antox.R
 
 class DrawerArrayAdapter(context: Context, resourceId: Int, initialItems: util.List[DrawerItem])
   extends ArrayAdapter[DrawerItem](context, resourceId, initialItems) {
@@ -18,10 +18,10 @@ class DrawerArrayAdapter(context: Context, resourceId: Int, initialItems: util.L
     var holder: ViewHolder = null
     val rowItem = getItem(position)
     val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE).asInstanceOf[LayoutInflater]
-    val newConvertView = inflater.inflate(R.layout.rowlayout_drawer, null)
+    val newConvertView = inflater.inflate(0, null)
     holder = new ViewHolder()
-    holder.txtLabel = newConvertView.findViewById(R.id.textView).asInstanceOf[TextView]
-    holder.imageView = newConvertView.findViewById(R.id.imageView).asInstanceOf[ImageView]
+    holder.txtLabel = newConvertView.findViewById(0).asInstanceOf[TextView]
+    holder.imageView = newConvertView.findViewById(0).asInstanceOf[ImageView]
     holder.txtLabel.setText(rowItem.getLabel)
     holder.imageView.setBackgroundResource(rowItem.getResId)
     newConvertView.setTag(holder)

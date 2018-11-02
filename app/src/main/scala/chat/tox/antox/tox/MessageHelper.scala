@@ -1,7 +1,7 @@
 package chat.tox.antox.tox
 
 import android.content.Context
-import chat.tox.antox.activities.{ChatActivity, GroupChatActivity}
+//import chat.tox.antox.activities.{ChatActivity, GroupChatActivity}
 import chat.tox.antox.data.State
 import chat.tox.antox.utils._
 import chat.tox.antox.wrapper._
@@ -30,7 +30,7 @@ object MessageHelper {
 
       if (!chatActive) {
         val unreadCount = db.getUnreadCounts(friendInfo.key)
-        AntoxNotificationManager.createMessageNotification(ctx, classOf[ChatActivity], friendInfo, new String(message.value), unreadCount)
+//        AntoxNotificationManager.createMessageNotification(ctx, classOf[ChatActivity], friendInfo, new String(message.value), unreadCount)
       }
     }
   }
@@ -44,7 +44,7 @@ object MessageHelper {
       hasBeenRead = chatActive, successfullySent = true, messageType)
 
     if (!chatActive) {
-      AntoxNotificationManager.createMessageNotification(ctx, classOf[GroupChatActivity], groupInfo, message)
+//      AntoxNotificationManager.createMessageNotification(ctx, classOf[GroupChatActivity], groupInfo, message)
     }
   }
 

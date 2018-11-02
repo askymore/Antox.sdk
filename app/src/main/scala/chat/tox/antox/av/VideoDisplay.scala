@@ -4,7 +4,7 @@ import android.app.Activity
 import android.graphics._
 import android.renderscript._
 import android.view.{Surface, TextureView, View}
-import chat.tox.antox.ScriptC_yuvToRgb
+//import chat.tox.antox.ScriptC_yuvToRgb
 import chat.tox.antox.utils.{AntoxLog, UiUtils}
 import org.apache.commons.collections4.queue.CircularFifoQueue
 import rx.lang.scala.schedulers.AndroidMainThreadScheduler
@@ -78,7 +78,7 @@ class Renderer(activity: Activity,
   var vAllocation: Allocation = _
 
   var outAllocation: Allocation = _
-  var yuvToRgbScript: ScriptC_yuvToRgb = _
+//  var yuvToRgbScript: ScriptC_yuvToRgb = _
 
   var bitmap: Bitmap = _
 
@@ -142,7 +142,7 @@ class Renderer(activity: Activity,
       rs = RenderScript.create(activity)
     }
 
-    yuvToRgbScript = new ScriptC_yuvToRgb(rs)
+//    yuvToRgbScript = new ScriptC_yuvToRgb(rs)
 
     val emptyType = new Type.Builder(rs, Element.U8(rs)).setX(width).setY(height)
     val yPlaneType = new Type.Builder(rs, Element.U8(rs)).setX(Math.max(width, Math.abs(yStride)) * height)
@@ -154,12 +154,12 @@ class Renderer(activity: Activity,
     uAllocation = Allocation.createTyped(rs, uPlaneType.create(), Allocation.USAGE_SCRIPT)
     vAllocation = Allocation.createTyped(rs, vPlaneType.create(), Allocation.USAGE_SCRIPT)
 
-    yuvToRgbScript.set_y_stride(yStride)
-    yuvToRgbScript.set_u_stride(uStride)
-    yuvToRgbScript.set_v_stride(vStride)
-    yuvToRgbScript.set_y_data(yAllocation)
-    yuvToRgbScript.set_u_data(uAllocation)
-    yuvToRgbScript.set_v_data(vAllocation)
+//    yuvToRgbScript.set_y_stride(yStride)
+//    yuvToRgbScript.set_u_stride(uStride)
+//    yuvToRgbScript.set_v_stride(vStride)
+//    yuvToRgbScript.set_y_data(yAllocation)
+//    yuvToRgbScript.set_u_data(uAllocation)
+//    yuvToRgbScript.set_v_data(vAllocation)
 
     val rgbaType = new Type.Builder(rs, Element.RGBA_8888(rs)).setX(width).setY(height)
     outAllocation = Allocation.createTyped(rs, rgbaType.create(), Allocation.USAGE_IO_OUTPUT | Allocation.USAGE_SCRIPT)
@@ -200,7 +200,7 @@ class Renderer(activity: Activity,
     vAllocation.copyFrom(videoFrame.yuvData.v)
     if (logging) AntoxLog.debug(s"packing took ${System.currentTimeMillis() - startPackingTime}")
 
-    yuvToRgbScript.forEach_yuvToRgb(emptyAllocation, outAllocation)
+//    yuvToRgbScript.forEach_yuvToRgb(emptyAllocation, outAllocation)
     outAllocation.ioSend()
 
     if (logging) AntoxLog.debug(s"conversion took ${System.currentTimeMillis() - startConversionTime}")

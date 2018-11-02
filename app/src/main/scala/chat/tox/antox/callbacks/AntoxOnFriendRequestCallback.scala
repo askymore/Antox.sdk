@@ -2,7 +2,7 @@ package chat.tox.antox.callbacks
 
 import android.content.Context
 import chat.tox.antox.data.State
-import chat.tox.antox.utils.{AntoxLog, AntoxNotificationManager}
+import chat.tox.antox.utils.{AntoxLog}
 import chat.tox.antox.wrapper.FriendKey
 import im.tox.tox4j.core.callbacks.FriendRequestCallback
 import im.tox.tox4j.core.data.{ToxFriendRequestMessage, ToxPublicKey}
@@ -17,6 +17,6 @@ class AntoxOnFriendRequestCallback(private var ctx: Context) extends FriendReque
     }
 
     AntoxLog.debug("New Friend Request")
-    AntoxNotificationManager.createRequestNotification(key, Some(new String(message.value)), ctx)
+//    AntoxNotificationManager.createRequestNotification(key, Some(new String(message.value)), ctx)
   }
 }

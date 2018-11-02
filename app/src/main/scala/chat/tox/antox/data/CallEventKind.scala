@@ -1,7 +1,7 @@
 package chat.tox.antox.data
 
 import android.content.Context
-import chat.tox.antox.R
+//import chat.tox.antox.R
 
 sealed abstract class CallEventKind(val kindId: Int, val imageRes: Int, private val messageRes: Int) {
   def message(context: Context): String = context.getResources.getString(messageRes)
@@ -9,23 +9,23 @@ sealed abstract class CallEventKind(val kindId: Int, val imageRes: Int, private 
 
 object CallEventKind {
 
-  case object Invalid extends CallEventKind(-1, 0, R.string.empty)
+  case object Invalid extends CallEventKind(-1, 0, 1)
 
-  case object Incoming extends CallEventKind(0, R.drawable.ic_phone_in_talk_black_18dp, R.string.call_event_incoming)
+  case object Incoming extends CallEventKind(0, 0, 1)
 
-  case object Outgoing extends CallEventKind(1, R.drawable.ic_call_made_black_18dp, R.string.call_event_outgoing)
+  case object Outgoing extends CallEventKind(1, 0, 1)
 
-  case object Rejected extends CallEventKind(2, R.drawable.ic_call_end_black_18dp, R.string.call_event_rejected)
+  case object Rejected extends CallEventKind(2, 0, 1)
 
-  case object Unanswered extends CallEventKind(3, R.drawable.ic_phone_missed_black_18dp, R.string.call_event_unanswered)
+  case object Unanswered extends CallEventKind(3, 0, 1)
 
-  case object Missed extends CallEventKind(4, R.drawable.ic_phone_missed_black_18dp, R.string.call_event_missed)
+  case object Missed extends CallEventKind(4, 0, 1)
 
-  case object Answered extends CallEventKind(5, R.drawable.ic_call_black_18dp, R.string.call_event_answered)
+  case object Answered extends CallEventKind(5, 0, 1)
 
-  case object Ended extends CallEventKind(6, R.drawable.ic_call_end_black_18dp, R.string.call_event_ended)
+  case object Ended extends CallEventKind(6, 0, 1)
 
-  case object Cancelled extends CallEventKind(7, R.drawable.ic_call_end_black_18dp, R.string.call_event_cancelled)
+  case object Cancelled extends CallEventKind(7, 0, 1)
 
   val values: Set[CallEventKind] =
     Set(

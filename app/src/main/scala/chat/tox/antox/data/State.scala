@@ -3,13 +3,12 @@ package chat.tox.antox.data
 import android.app.Activity
 import android.content.{Context, Intent}
 import android.preference.PreferenceManager
-import android.support.v4.content.IntentCompat
-import chat.tox.antox.activities.LoginActivity
+
 import chat.tox.antox.av.CallManager
 import chat.tox.antox.tox.{ToxDataFile, ToxService, ToxSingleton}
 import chat.tox.antox.toxme.{ToxData, ToxMe}
 import chat.tox.antox.transfer.FileTransferManager
-import chat.tox.antox.utils.{AntoxNotificationManager, ProxyUtils}
+import chat.tox.antox.utils.{ ProxyUtils}
 import chat.tox.antox.wrapper.ContactKey
 import rx.lang.scala.subjects.BehaviorSubject
 
@@ -103,18 +102,18 @@ object State {
     userDb(context).login(name)
     val preferences = PreferenceManager.getDefaultSharedPreferences(context)
     if (preferences.getBoolean("notifications_persistent", false)) {
-      AntoxNotificationManager.createPersistentNotification(context)
+//      AntoxNotificationManager.createPersistentNotification(context)
     }
   }
 
   def logout(activity: Activity): Unit = {
     val preferences = PreferenceManager.getDefaultSharedPreferences(activity.getApplicationContext)
     if (preferences.getBoolean("notifications_persistent", false)) {
-      AntoxNotificationManager.removePersistentNotification()
+//      AntoxNotificationManager.removePersistentNotification()
     }
 
     //clear notifications as they are now invalid after logging out
-    AntoxNotificationManager.clearAllNotifications()
+//    AntoxNotificationManager.clearAllNotifications()
 
     //remove and end all calls
     callManager.removeAndEndAll()
@@ -131,19 +130,19 @@ object State {
     activity.stopService(startTox)
     userDb(activity).logout()
 
-    val login = new Intent(activity, classOf[LoginActivity])
-    activity.startActivity(login)
-    activity.finish()
+//    val login = new Intent(activity, classOf[LoginActivity])
+//    activity.startActivity(login)
+//    activity.finish()
   }
 
   def shutdown(c: Context): Unit = {
     val preferences = PreferenceManager.getDefaultSharedPreferences(c.getApplicationContext)
     if (preferences.getBoolean("notifications_persistent", false)) {
-      AntoxNotificationManager.removePersistentNotification()
+//      AntoxNotificationManager.removePersistentNotification()
     }
 
     //clear notifications as they are now invalid after logging out
-    AntoxNotificationManager.clearAllNotifications()
+//    AntoxNotificationManager.clearAllNotifications()
 
     //remove and end all calls
     callManager.removeAndEndAll()
@@ -180,17 +179,17 @@ object State {
     userDb(activity.getApplicationContext).deleteActiveUser()
 
     if (preferences.getBoolean("notifications_persistent", false)) {
-      AntoxNotificationManager.removePersistentNotification()
+//      AntoxNotificationManager.removePersistentNotification()
     }
-    AntoxNotificationManager.clearAllNotifications()
+//    AntoxNotificationManager.clearAllNotifications()
 
     val startTox = new Intent(activity, classOf[ToxService])
     activity.stopService(startTox)
-    val loginIntent = new Intent(activity, classOf[LoginActivity])
-    loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-      Intent.FLAG_ACTIVITY_CLEAR_TOP |
-      IntentCompat.FLAG_ACTIVITY_CLEAR_TASK)
-    activity.startActivity(loginIntent)
-    activity.finish()
+//    val loginIntent = new Intent(activity, classOf[LoginActivity])
+//    loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+//      Intent.FLAG_ACTIVITY_CLEAR_TOP |
+//      IntentCompat.FLAG_ACTIVITY_CLEAR_TASK)
+//    activity.startActivity(loginIntent)
+//    activity.finish()
   }
 }

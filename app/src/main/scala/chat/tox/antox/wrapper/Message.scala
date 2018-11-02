@@ -3,7 +3,7 @@ package chat.tox.antox.wrapper
 import java.sql.Timestamp
 
 import android.content.Context
-import chat.tox.antox.R
+//import chat.tox.antox.R
 import chat.tox.antox.data.CallEventKind
 import chat.tox.antox.tox.ToxSingleton
 import chat.tox.antox.utils.{FileUtils, TimestampUtils}
@@ -49,15 +49,15 @@ case class Message(id: Int,
 
         if (FileUtils.hasImageFilename(fileName)) {
           if (isMine) {
-            context.getResources.getString(R.string.you_sent_image)
+            context.getResources.getString(0)
           } else {
-            context.getResources.getString(R.string.friend_sent_image, senderName)
+            context.getResources.getString(0)
           }
         } else {
           if (isMine) {
-            context.getResources.getString(R.string.you_sent_file)
+            context.getResources.getString(0)
           } else {
-            context.getResources.getString(R.string.friend_sent_file, senderName)
+            context.getResources.getString(0)
           }
         }
       case MessageType.GROUP_MESSAGE =>
