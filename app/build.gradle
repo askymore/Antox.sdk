@@ -42,12 +42,12 @@ repositories {
 apply plugin: "com.android.library"
 apply plugin: "jp.leafytree.android-scala"
 apply plugin: 'maven'
-
+group = 'com.github.askymore'
 android {
     compileSdkVersion 25
 
     dexOptions {
-        javaMaxHeapSize "2012m"
+        javaMaxHeapSize "4g"
 //         preDexLibraries = true
     }
     sourceSets {
