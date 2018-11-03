@@ -35,9 +35,9 @@ class ToxAv(core: ToxCoreImpl) extends Intervals {
                      u: Array[Byte], v: Array[Byte]): Unit =
     toxAv.videoSendFrame(ToxFriendNumber.unsafeFromInt(callNumber.value), width, height, y, u, v)
 
-  def setAudioBitRate(callNumber: CallNumber, bitRate: BitRate): Unit =
-    toxAv.setBitRate(ToxFriendNumber.unsafeFromInt(callNumber.value), bitRate, BitRate.Unchanged)
+  def setAudioBitRate(callNumber: CallNumber, bitRate: BitRate): Unit = null
+//    toxAv.setBitRate(ToxFriendNumber.unsafeFromInt(callNumber.value), bitRate, BitRate.Unchanged)
 
-  def setVideoBitRate(callNumber: CallNumber, bitRate: BitRate): Unit =
-    toxAv.setBitRate(ToxFriendNumber.unsafeFromInt(callNumber.value), BitRate.Unchanged, bitRate)
+  def setVideoBitRate(callNumber: CallNumber, bitRate: BitRate): Unit =null
+//    toxAv.setBitRate(ToxFriendNumber.unsafeFromInt(callNumber.value), BitRate.Unchanged, bitRate)
 }
