@@ -45,6 +45,7 @@ apply plugin: 'maven'
 group = 'com.github.askymore'
 android {
     compileSdkVersion 25
+    buildToolsVersion '26.0.2'
 
     dexOptions {
         javaMaxHeapSize "4g"
