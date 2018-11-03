@@ -43,5 +43,5 @@ build/
 capture/
 app/libs/tox4j*
 app/libs/protobuf-java-2.6.1.jar
-app/src/main/jniLibs
+#app/src/main/jniLibs
 atlassian-ide-plugin.xml
