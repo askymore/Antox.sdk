@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="chat.tox.antox"
     android:versionCode="25001"
-    android:name="android.support.multidex.MultiDexApplication"
     android:versionName="0.25.1">
 
     <uses-sdk tools:overrideLibrary="pub.devrel.easypermissions, xyz.danoz.recyclerviewfastscroller,com.astuetz.pagerslidingtabstrip, com.balysv.materialripple, jp.wasabeef.recyclerview, org.kaliumjni.lib" />
