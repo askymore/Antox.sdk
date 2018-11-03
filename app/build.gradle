@@ -50,6 +50,11 @@ android {
         javaMaxHeapSize "2012m"
 //         preDexLibraries = true
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['jnilibs']
+        }
+    }
 
     defaultConfig {
         minSdkVersion 14
