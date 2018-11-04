@@ -45,10 +45,11 @@ apply plugin: "jp.leafytree.android-scala"
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 27
+    buildToolsVersion "27.0.1"
 
     dexOptions {
-        javaMaxHeapSize "4g"
+        javaMaxHeapSize "2012m"
 //         preDexLibraries = true
     }
     sourceSets {
@@ -59,7 +60,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 27
 
         renderscriptTargetApi 23
 
@@ -169,7 +170,7 @@ dependencies {
 //    compile 'com.android.support:recyclerview-v7:25.1.0'
 //    compile 'com.android.support:appcompat-v7:25.1.0'
 //    compile 'com.android.support:gridlayout-v7:25.1.0'
-    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.android.support:support-v4:27.1.1'
 
     // -- upgrade me !! --
     // -- upgrade me !! --
@@ -254,3 +255,4 @@ uploadArchives{
         }
     }
 }
+
