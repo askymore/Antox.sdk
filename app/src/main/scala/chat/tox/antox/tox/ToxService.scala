@@ -12,6 +12,7 @@ import im.tox.tox4j.core.enums.ToxConnection
 import im.tox.tox4j.impl.jni.ToxJniLog
 import rx.lang.scala.schedulers.AndroidMainThreadScheduler
 import rx.lang.scala.{Observable, Subscription}
+
 import scala.concurrent.duration._
 
 class ToxService extends Service {

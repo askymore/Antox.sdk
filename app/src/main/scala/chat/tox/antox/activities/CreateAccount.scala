@@ -3,22 +3,16 @@ package chat.tox.antox.activities
 import java.io.File
 import java.util.regex.Pattern
 
-
-import android.content.{Context,  Intent}
-
+import android.content.{Context, Intent}
 import android.preference.PreferenceManager
-
 import android.widget._
-
 import chat.tox.antox.data.{State, UserDB}
-
 import chat.tox.antox.tox.{ToxDataFile, ToxService}
-import chat.tox.antox.toxme.{ToxData, ToxMe, ToxMeError, ToxMeName}
 import chat.tox.antox.toxme.ToxMe.PrivacyLevel
 import chat.tox.antox.toxme.ToxMeError.ToxMeError
+import chat.tox.antox.toxme.{ToxData, ToxMe, ToxMeError, ToxMeName}
 import chat.tox.antox.utils._
 import chat.tox.antox.wrapper.ToxAddress
-
 import im.tox.tox4j.core.exceptions.ToxNewException
 import im.tox.tox4j.core.options.SaveDataOptions.ToxSave
 import im.tox.tox4j.core.options.ToxOptions

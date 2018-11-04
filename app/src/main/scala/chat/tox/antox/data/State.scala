@@ -3,12 +3,11 @@ package chat.tox.antox.data
 import android.app.Activity
 import android.content.{Context, Intent}
 import android.preference.PreferenceManager
-
 import chat.tox.antox.av.CallManager
 import chat.tox.antox.tox.{ToxDataFile, ToxService, ToxSingleton}
 import chat.tox.antox.toxme.{ToxData, ToxMe}
 import chat.tox.antox.transfer.FileTransferManager
-import chat.tox.antox.utils.{ ProxyUtils}
+import chat.tox.antox.utils.ProxyUtils
 import chat.tox.antox.wrapper.ContactKey
 import rx.lang.scala.subjects.BehaviorSubject
 

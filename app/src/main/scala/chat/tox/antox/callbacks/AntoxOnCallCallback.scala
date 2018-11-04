@@ -1,6 +1,6 @@
 package chat.tox.antox.callbacks
 
-import android.content.{Context, Intent}
+import android.content.Context
 //import chat.tox.antox.activities.CallActivity
 import chat.tox.antox.av.Call
 import chat.tox.antox.data.State
